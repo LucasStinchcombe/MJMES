@@ -6,18 +6,23 @@ class Tag(models.Model):
     def __str__(self):
         return self.slug
 
+
 class EntryQuerySet(models.QuerySet):
     def published(self):
         return self.filter(publish=True)
 
+
 class Entry(models.Model):
     title = models.CharField(max_length=200)
+    subtitle = models.CharField(max_length=200)
+    author = models.CharField(max_length=50)
     body = models.TextField()
-    slug = models.SlugField(max_length=200, unique=True)
-    publish = models.BooleanField(default=True)
-    created = models.DateTimeField(auto_now_add=True)
-    modified = models.DateTimeField(auto_now=True)
     tags = models.ManyToManyField(Tag)
+
+    publish = models.BooleanField(default=True)
+    created = models.DateField(auto_now_add=True)
+    modified = models.DateField(auto_now=True)
+    slug = models.SlugField(max_length=200, unique=True)
 
     objects = EntryQuerySet.as_manager()
 

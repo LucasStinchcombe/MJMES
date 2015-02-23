@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+
+{% block heading %}
+    <div class="post-heading">
+        <h1>{{ blogpost.title }}</h1>
+        <h2 class="subheading">{{ blogpost.subtitle }}</h2>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {{ blogpost.body }}
+    <hr>
+{% endblock %}
