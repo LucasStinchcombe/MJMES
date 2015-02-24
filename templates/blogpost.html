@@ -9,6 +9,6 @@
 {% endblock %}
 
 {% block content %}
-    {{ blogpost.body }}
+    {{ blogpost.body|markdown }}
     <hr>
 {% endblock %}
