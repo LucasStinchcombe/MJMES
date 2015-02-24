@@ -1,6 +1,11 @@
 {% extends "base.html" %}
 {% load django_markdown %}
 
+{% block image %}
+  url('/{{ blogpost.image.image }}')
+{% endblock %}
+
+
 {% block heading %}
     <div class="post-heading">
         <h1>{{ blogpost.title }}</h1>

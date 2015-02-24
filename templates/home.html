@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load django_markdown %}
 
+{% block image %}
+  url('/static/img/home-bg.jpg')
+{% endblock %}
+
 {% block heading %}
     <div class="site-heading">
         <h1>The McGill Journal of Middle East Studies</h1>
