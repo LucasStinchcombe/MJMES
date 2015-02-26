@@ -15,17 +15,24 @@
 
 {% block content %}
 {% for object in object_list %}
-    <div class="post-preview">
-        <a href="blogpost/{{ object.id }}">
-            <h2 class="post-title"> {{ object.title }} </h2>
-            <h3 class="post-subtitle"> {{ object.subtitle }} </h3>
-        </a>
-        <p class="post-meta">
-            Posted by {{ object.author }} on {{ object.created }} <br>
-            <small>Tagged Under: {{ object.tags.all|join:", " }}</small>
-        </p>
+  <div class='row'>
+    <div class = 'hidden-xs col-sm-4'>
+      <img class="img-responsive" src='{{ object.image.image }}'>
     </div>
-    <hr>
+    <div class='col-sm-8'>
+      <div class="post-preview">
+          <a href="blogpost/{{ object.id }}">
+              <h2 class="post-title"> {{ object.title }} </h2>
+              <h3 class="post-subtitle"> {{ object.subtitle }} </h3>
+          </a>
+          <p class="post-meta">
+              Posted by {{ object.author }} on {{ object.created }} <br>
+              <small>Tagged Under: {{ object.tags.all|join:", " }}</small>
+          </p>
+      </div>
+    </div>
+  </div>
+  <hr>
 {% endfor %}
 {% endblock %}
 
