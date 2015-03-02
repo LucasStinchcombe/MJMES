@@ -38,6 +38,7 @@ INSTALLED_APPS = (
 
     'blog',
     'django_markdown',
+    'archives',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -60,8 +61,10 @@ WSGI_APPLICATION = 'MJMES.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'django_db',
+        'USER': 'root',
+        'PASSWORD': '',
     }
 }
 
@@ -85,12 +88,13 @@ USE_TZ = True
 STATIC_URL = '/static/'
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"),)
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
+PDF_PATH = (os.path.join(BASE_DIR, 'static/pdf'))
 
 
 
 
 ##### FOR HEROKU #######
-# 
+#
 # # Parse database configuration from $DATABASE_URL
 # import dj_database_url
 # DATABASES['default'] =  dj_database_url.config()
