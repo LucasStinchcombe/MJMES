@@ -13,17 +13,18 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Archive',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.SlugField(max_length=200, unique=True, serialize=False, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
-                ('pdf', models.FileField(upload_to=b'/static/pdf')),
+                ('pdf', models.FileField(upload_to=b'static/pdf')),
+                ('author', models.CharField(default=b'MJMES', max_length=200)),
                 ('created', models.DateField(auto_now_add=True)),
                 ('modified', models.DateField(auto_now=True)),
                 ('publish', models.BooleanField(default=True)),
             ],
             options={
                 'ordering': ['-created'],
-                'verbose_name': 'Archive Entry',
-                'verbose_name_plural': 'Archive Entries',
+                'verbose_name': 'Archived Edition',
+                'verbose_name_plural': 'Archived Editions',
             },
             bases=(models.Model,),
         ),

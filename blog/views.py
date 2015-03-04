@@ -8,5 +8,5 @@ class BlogIndex(generic.ListView):
     paginate_by = 3
 
 def BlogPost(request, blog_id):
-    blogpost = models.Entry.objects.get(pk=blog_id)
+    blogpost = models.Entry.objects.get(id=blog_id)
     return render(request, 'blogpost.html', {'blogpost': blogpost})

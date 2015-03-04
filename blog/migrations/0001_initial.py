@@ -13,13 +13,14 @@ class Migration(migrations.Migration):
         migrations.CreateModel(
             name='Entry',
             fields=[
-                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('id', models.SlugField(max_length=200, unique=True, serialize=False, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
+                ('subtitle', models.CharField(max_length=200)),
+                ('author', models.CharField(max_length=200)),
                 ('body', models.TextField()),
-                ('slug', models.SlugField(unique=True, max_length=200)),
                 ('publish', models.BooleanField(default=True)),
-                ('created', models.DateTimeField(auto_now_add=True)),
-                ('modified', models.DateTimeField(auto_now=True)),
+                ('created', models.DateField(auto_now_add=True)),
+                ('modified', models.DateField(auto_now=True)),
             ],
             options={
                 'ordering': ['-created'],
@@ -27,5 +28,42 @@ class Migration(migrations.Migration):
                 'verbose_name_plural': 'Blog Entries',
             },
             bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Image',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('title', models.CharField(max_length=200)),
+                ('image', models.ImageField(height_field=b'height', width_field=b'width', upload_to=b'static/img')),
+                ('width', models.IntegerField(editable=False)),
+                ('height', models.IntegerField(editable=False)),
+                ('created', models.DateField(auto_now_add=True)),
+                ('modified', models.DateField(auto_now=True)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.CreateModel(
+            name='Tag',
+            fields=[
+                ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
+                ('slug', models.SlugField(unique=True, max_length=200)),
+            ],
+            options={
+            },
+            bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='entry',
+            name='image',
+            field=models.ForeignKey(to='blog.Image'),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='entry',
+            name='tags',
+            field=models.ManyToManyField(to='blog.Tag'),
+            preserve_default=True,
         ),
     ]

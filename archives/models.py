@@ -5,7 +5,8 @@ class ArchiveQuerySet(models.QuerySet):
         return self.filter(publish=True)
 
 class Archive(models.Model):
-    title = models.CharField(max_length=200, primary_key=True)
+    id = models.SlugField(max_length=200, unique=True, primary_key=True)
+    title = models.CharField(max_length=200)
     pdf = models.FileField(upload_to='static/pdf')
     author = models.CharField(max_length=200, default="MJMES")
 
@@ -14,6 +15,9 @@ class Archive(models.Model):
     publish = models.BooleanField(default=True)
 
     objects = ArchiveQuerySet.as_manager()
+
+    def __str__(self):
+        return self.title
 
     class Meta:
         verbose_name = "Archived Edition"

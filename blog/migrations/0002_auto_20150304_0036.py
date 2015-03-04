@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archives', '0002_auto_20150301_2302'),
+        ('blog', '0001_initial'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='archive',
-            name='pdf',
-            field=models.FileField(upload_to=b'static/pdf'),
+            model_name='entry',
+            name='id',
+            field=models.SlugField(primary_key=True, serialize=False, editable=False, max_length=200, unique=True),
         ),
     ]

@@ -7,14 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('blog', '0004_entry_author'),
+        ('blog', '0002_auto_20150304_0036'),
     ]
 
     operations = [
-        migrations.AddField(
+        migrations.AlterField(
             model_name='entry',
-            name='subtitle',
-            field=models.CharField(default='This is the sub-title', max_length=200),
-            preserve_default=False,
+            name='id',
+            field=models.SlugField(max_length=200, unique=True, serialize=False, primary_key=True),
         ),
     ]
