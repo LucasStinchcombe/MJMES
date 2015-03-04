@@ -1,4 +1,8 @@
 from django.contrib import admin
 from . import models
 
-admin.site.register(models.Archive)
+class ArchiveAdmin(admin.ModelAdmin):
+    list_display = ('title', 'publish', 'created')
+    prepopulated_fields = {'id':('title',)}
+
+admin.site.register(models.Archive, ArchiveAdmin)

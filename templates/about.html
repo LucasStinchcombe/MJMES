@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+
+{% block image %}
+  url('/static/img/about-bg.jpg')
+{% endblock %}
+
+{% block heading %}
+    <div class="site-heading">
+        <h1>About The Journal</h1>
+        <hr class="small">
+        <span class="subheading">The Official MJMES Blog</span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {{ about.content|markdown }}
+    <hr>
+{% endblock %}

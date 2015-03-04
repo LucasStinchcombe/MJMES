@@ -1,4 +1,5 @@
 from django.db import models
+from about import models as about
 
 class Tag(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
@@ -17,9 +18,6 @@ class Image(models.Model):
     def __str__(self):
         return self.title
 
-class Writer(models.Model):
-    bio = models.TextField()
-
 
 class EntryQuerySet(models.QuerySet):
     def published(self):
@@ -28,7 +26,7 @@ class EntryQuerySet(models.QuerySet):
 class Entry(models.Model):
     title = models.CharField(max_length=200)
     subtitle = models.CharField(max_length=200)
-    author = models.CharField(max_length=200)
+    author = models.ForeignKey(about.Staff)
     body = models.TextField()
     image = models.ForeignKey(Image)
     tags = models.ManyToManyField(Tag)
@@ -37,9 +35,8 @@ class Entry(models.Model):
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
-    objects = EntryQuerySet.as_manager()
-
     id = models.SlugField(max_length=200, unique=True, primary_key=True)
+    objects = EntryQuerySet.as_manager()
 
     def __str__(self):
         return self.title

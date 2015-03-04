@@ -5,7 +5,6 @@ class ArchiveQuerySet(models.QuerySet):
         return self.filter(publish=True)
 
 class Archive(models.Model):
-    id = models.SlugField(max_length=200, unique=True, primary_key=True)
     title = models.CharField(max_length=200)
     pdf = models.FileField(upload_to='static/pdf')
     author = models.CharField(max_length=200, default="MJMES")
@@ -13,7 +12,8 @@ class Archive(models.Model):
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
     publish = models.BooleanField(default=True)
-
+    
+    id = models.SlugField(max_length=200, unique=True, primary_key=True)
     objects = ArchiveQuerySet.as_manager()
 
     def __str__(self):

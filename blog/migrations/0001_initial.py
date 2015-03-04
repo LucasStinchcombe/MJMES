@@ -7,20 +7,21 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
+        ('about', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
             name='Entry',
             fields=[
-                ('id', models.SlugField(max_length=200, unique=True, serialize=False, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
                 ('subtitle', models.CharField(max_length=200)),
-                ('author', models.CharField(max_length=200)),
                 ('body', models.TextField()),
                 ('publish', models.BooleanField(default=True)),
                 ('created', models.DateField(auto_now_add=True)),
                 ('modified', models.DateField(auto_now=True)),
+                ('id', models.SlugField(max_length=200, unique=True, serialize=False, primary_key=True)),
+                ('author', models.ForeignKey(to='about.Staff')),
             ],
             options={
                 'ordering': ['-created'],
