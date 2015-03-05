@@ -9,4 +9,4 @@ class BlogIndex(generic.ListView):
 
 def BlogPost(request, blog_id):
     blogpost = models.Entry.objects.get(id=blog_id)
-    return render(request, 'blogpost.html', {'blogpost': blogpost})
+    return render(request, 'blogpost.html', { 'blogpost': blogpost })

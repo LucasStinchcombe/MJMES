@@ -1,15 +1,16 @@
 {% extends "base.html" %}
 {% load django_markdown %}
+{% load staticfiles %}
 
-{% block image %}
-  url('/static/img/archives-bg.jpg')
+{% block photograph %}
+  url('{% static 'img/archives-bg.jpg' %}')
 {% endblock %}
 
 {% block heading %}
     <div class="site-heading">
-        <h1>The McGill Journal of Middle East Studies</h1>
+        <h1>Archived Editions</h1>
         <hr class="small">
-        <span class="subheading">Archived Editions</span>
+        <span class="subheading">The Official MJMES Blog</span>
     </div>
 {% endblock %}
 

@@ -36,11 +36,10 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'django_markdown',
-
     'blog',
     'archives',
     'about',
+    'django_markdown',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -88,7 +87,16 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATIC_URL = '/static/'
-TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"),)
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-FIXTURE_DIRS = (os.path.join(BASE_DIR, "fixtures"),)
-PDF_PATH = (os.path.join(BASE_DIR, 'static/pdf'))
+TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"),)
+FIXTURE_DIRS = (os.path.join(BASE_DIR, "templates/fixtures"),)
+
+
+# MJMES Website Information
+from django.contrib import admin
+admin.site.site_header = 'MJMES Administration'
+admin.site.title = 'MJMES'
+
+
+
+MARKDOWN_EDITOR_SKIN = 'simple'

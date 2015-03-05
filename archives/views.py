@@ -8,8 +8,8 @@ class ArchiveIndex(generic.ListView):
     template_name = "archives.html"
     paginate_by = 3
 
-def PDF(request, file_id):
-    archive = models.Archive.objects.get(id=file_id)
+def PDF(request, archive_id):
+    archive = models.Archive.objects.get(id=archive_id)
 
     response = HttpResponse(archive.pdf)
     response['Content-Type'] = 'application/pdf'

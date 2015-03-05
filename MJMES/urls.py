@@ -11,5 +11,3 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include('django_markdown.urls')),
 )
-
-admin.site.site_header = 'McGill Journal of Middle East Studies'

@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 {% load django_markdown %}
+{% load staticfiles %}
 
-{% block image %}
-  url('/static/img/home-bg.jpg')
+{% block photograph %}
+  url('{% static 'img/home-bg.jpg' %}')
 {% endblock %}
 
 {% block heading %}
@@ -17,7 +18,7 @@
 {% for object in object_list %}
   <div class='row'>
     <div class = 'hidden-xs col-sm-4'>
-      <img class="img-responsive" src='{{ object.image.image }}'>
+      <img class="img-responsive" src='{{ object.photograph.image }}'>
     </div>
     <div class='col-sm-8'>
       <div class="post-preview">

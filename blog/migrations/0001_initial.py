@@ -35,9 +35,8 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
-                ('image', models.ImageField(height_field=b'height', width_field=b'width', upload_to=b'static/img')),
-                ('width', models.IntegerField(editable=False)),
-                ('height', models.IntegerField(editable=False)),
+                ('image', models.ImageField(upload_to=b'media/img/blogpost')),
+                ('caption', models.TextField(null=True, blank=True)),
                 ('created', models.DateField(auto_now_add=True)),
                 ('modified', models.DateField(auto_now=True)),
             ],
@@ -57,8 +56,14 @@ class Migration(migrations.Migration):
         ),
         migrations.AddField(
             model_name='entry',
-            name='image',
-            field=models.ForeignKey(to='blog.Image'),
+            name='images',
+            field=models.ManyToManyField(related_name=b'figures and tables', to='blog.Image', blank=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='entry',
+            name='photograph',
+            field=models.ForeignKey(related_name=b'main photograph', to='blog.Image', unique=True),
             preserve_default=True,
         ),
         migrations.AddField(

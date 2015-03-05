@@ -57,6 +57,11 @@ hr.small {
 .navbar-custom .navbar-brand {
   font-weight: 800;
 }
+.navbar-custom .navbar-brand img{
+  max-height: 45px;
+  float: left;
+  margin: -12px 10px 0 5px;
+}
 .navbar-custom .nav li a {
   text-transform: uppercase;
   font-size: 14px;
@@ -134,7 +139,7 @@ hr.small {
 }
 .intro-header {
   background-color: #808080;
-  background: no-repeat center bottom;
+  background: no-repeat center center;
   background-attachment: scroll;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -145,20 +150,20 @@ hr.small {
 .intro-header .site-heading,
 .intro-header .post-heading,
 .intro-header .page-heading {
-  padding: 100px 0 50px;
   color: white;
-}
-@media only screen and (min-width: 768px) {
-  .intro-header .site-heading,
-  .intro-header .post-heading,
-  .intro-header .page-heading {
-    padding: 150px 0;
-  }
 }
 .intro-header .site-heading,
 .intro-header .page-heading,
 .intro-header .post-heading {
   text-align: center;
+  padding: 65px 0 15px 0;
+}
+@media only screen and (min-width: 768px) {
+  .intro-header .site-heading,
+  .intro-header .post-heading,
+  .intro-header .page-heading {
+    padding: 120px 0 100px 0;
+  }
 }
 .intro-header .site-heading h1,
 .intro-header .page-heading h1 {
