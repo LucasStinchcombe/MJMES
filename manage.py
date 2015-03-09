@@ -3,7 +3,7 @@ import os
 import sys
 
 if __name__ == "__main__":
-    sys.path.append(os.path.dirname(__file__))
+    sys.path.append( os.path.join( os.path.dirname(__file__),'MJMES' ))
     for path in sys.path:
         print path
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "MJMES.settings")
