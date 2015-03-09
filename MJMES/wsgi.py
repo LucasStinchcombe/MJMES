@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.7/howto/deployment/wsgi/
 
 import os
 # os.environ.setdefault("SETTINGS_MODULE", "MJMES/settings")
-os.environ['DJANGO_SETTINGS_MODULE'] = 'mjmes.settings'
+os.environ['DJANGO_SETTINGS_MODULE'] = 'mjmes/settings'
 
 from django.core.wsgi import get_wsgi_application
 application = get_wsgi_application()
