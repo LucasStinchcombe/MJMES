@@ -12,8 +12,11 @@ https://docs.djangoproject.com/en/1.7/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = '4n-3y@4yg(4*rjsh5$&=x&jckgb(1m++j6ro^br*cxture40n6'
+
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -26,7 +29,6 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_markdown',
-    'gunicorn',
     'blog',
     'archives',
     'about',
@@ -47,9 +49,18 @@ WSGI_APPLICATION = 'MJMES.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-import dj_database_url
+# import dj_database_url
+# DATABASES = {
+#     'default' : dj_database_url.config()
+# }
+
 DATABASES = {
-    'default' : dj_database_url.config()
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'mjmes',
+        'USER': 'root',
+        'PASSWORD': 'mjmes',
+    }
 }
 
 # Internationalization
@@ -74,7 +85,4 @@ FIXTURE_DIRS = (os.path.join(BASE_DIR, "templates/fixtures"),)
 from django.contrib import admin
 admin.site.site_header = 'MJMES Administration'
 admin.site.title = 'MJMES'
-
-
-
 MARKDOWN_EDITOR_SKIN = 'simple'
