@@ -3,5 +3,4 @@ from . import models
 
 def about(request):
     about = list(models.AboutUs.objects.published())[0]
-    return render(request, 'about.html', { 'about':about })
-    
+    return render(request, 'about.html', { 'about': about })
