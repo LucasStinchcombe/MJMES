@@ -3,10 +3,10 @@
 {% load staticfiles %}
 
 {% block photograph %}
-  url('{% static 'img/about-bg.jpg' %}')
+    url('/{{ about.photograph.image }}')
 {% endblock %}
 
-{% block heading %}
+{% block heading %}sive
     <div class="site-heading">
         <h1>About Us</h1>
         <hr class="small">
@@ -15,6 +15,12 @@
 {% endblock %}
 
 {% block content %}
-    {{ about.content|markdown }}
+    {{ about.markdown|markdown }}
     <hr>
+{% endblock %}
+
+{% block scripts %}
+    <script>
+      $('img').addClass('img-responsive')
+    </script>
 {% endblock %}

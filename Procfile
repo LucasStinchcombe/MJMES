@@ -1,1 +1,1 @@
-web: gunicorn mjmes.wsgi
+web: gunicorn MJMES.wsgi --log-file -

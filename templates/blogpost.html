@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 {% block photograph %}
-  url('/{{ blogpost.photograph.image }}')
+  url('{% static blogpost.photograph.url %}')
 {% endblock %}
 
 
@@ -15,7 +15,7 @@
 {% endblock %}
 
 {% block content %}
-    {{ blogpost.html|markdown }}
+    {{ blogpost.markdown | markdown }}
     <hr>
 {% endblock %}
 

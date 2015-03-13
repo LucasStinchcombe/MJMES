@@ -16,3 +16,4 @@ class AboutUsAdmin(MarkdownModelAdmin):
 
 admin.site.register(models.Staff, StaffAdmin)
 admin.site.register(models.AboutUs, AboutUsAdmin)
+admin.site.register(models.Photograph)

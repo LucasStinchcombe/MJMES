@@ -6,3 +6,4 @@ class ArchiveAdmin(admin.ModelAdmin):
     prepopulated_fields = {'id':('title',)}
 
 admin.site.register(models.Archive, ArchiveAdmin)
+admin.site.register(models.Thumbnail)

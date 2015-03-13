@@ -12,7 +12,6 @@ def markdown_to_html( markdownText, images ):
     markdown = "%s\n%s" % (markdownText, image_ref)
     return markdown
 
-
 class Tag(models.Model):
     slug = models.SlugField(max_length=200, unique=True)
     def __str__(self):
@@ -26,9 +25,11 @@ class Image(models.Model):
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
+    def url(self):
+        return self.image.url[7:]
+
     def __str__(self):
         return self.title
-
 
 class EntryQuerySet(models.QuerySet):
     def published(self):
@@ -54,7 +55,7 @@ class Entry(models.Model):
     def __str__(self):
         return self.title
 
-    def html(self):
+    def markdown(self):
         return markdown_to_html(self.body, self.images.all())
 
     class Meta:

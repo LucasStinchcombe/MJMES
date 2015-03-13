@@ -15,24 +15,21 @@
 {% endblock %}
 
 {% block content %}
-{% for object in object_list %}
   <div class='row'>
-    <div class = 'hidden-xs col-sm-4'>
-      <img class="img-responsive" src='{{ object.image.image }}'>
-    </div>
-    <div class='col-sm-8'>
+{% for object in object_list %}
+    <div class="col-md-3">
       <div class="post-preview">
-          <a href="pdf/{{ object.id }}">
-              <h2 class="post-title"> {{ object.title }} </h2>
-          </a>
-          <p class="post-meta">
-              Posted by {{ object.author }} on {{ object.created }} <br>
-          </p>
-      </div>
+        <a href="pdf/{{ object.id }}">
+          <img class="img-responsive" src="{% static object.thumbnail.url %}">
+                <h2 class="post-title"> {{ object.title }} </h2>
+            </a>
+            <p class="post-meta">
+                Posted by {{ object.author }} on {{ object.created }} <br>
+            </p>
+        </div>
     </div>
-  </div>
-  <hr>
 {% endfor %}
+  <div>
 {% endblock %}
 
 
