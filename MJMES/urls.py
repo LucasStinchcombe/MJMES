@@ -2,6 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 from blog import views
 from archives import views
+from arbout import views
 
 urlpatterns = patterns(
     '',
