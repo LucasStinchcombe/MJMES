@@ -21,7 +21,7 @@ class ArchiveQuerySet(models.QuerySet):
 class Archive(models.Model):
     title = models.CharField(max_length=200)
     pdf = models.FileField(upload_to='static/pdf')
-    thumbnail = models.ForeignKey(Thumbnail)
+    thumbnail = models.ForeignKey(Thumbnail, null=True, blank=True)
     author = models.CharField(max_length=200, default="MJMES")
 
     created = models.DateField(auto_now_add=True)

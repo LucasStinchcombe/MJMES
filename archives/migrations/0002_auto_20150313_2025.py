@@ -7,7 +7,7 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('archives', '0003_auto_20150312_1846'),
+        ('archives', '0001_initial'),
     ]
 
     operations = [
@@ -24,9 +24,14 @@ class Migration(migrations.Migration):
             },
             bases=(models.Model,),
         ),
-        migrations.AlterField(
+        migrations.AlterModelOptions(
+            name='archive',
+            options={'ordering': ['created'], 'verbose_name': 'Archived Edition', 'verbose_name_plural': 'Archived Editions'},
+        ),
+        migrations.AddField(
             model_name='archive',
             name='thumbnail',
             field=models.ForeignKey(blank=True, to='archives.Thumbnail', null=True),
+            preserve_default=True,
         ),
     ]
