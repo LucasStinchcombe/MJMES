@@ -1,8 +1,6 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
-from blog import views
-from archives import views
-from about import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = patterns(
     '',
@@ -12,3 +10,5 @@ urlpatterns = patterns(
     url(r'^admin/', include(admin.site.urls)),
     url(r'^markdown/', include('django_markdown.urls')),
 )
+
+urlpatterns += staticfiles_urlpatterns()
