@@ -12,12 +12,15 @@ def markdown_to_html( markdownText, images ):
 
 class Photograph(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='static/img/about')
+    image = models.ImageField(upload_to='about/static/img')
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
     def __str__(self):
         return self.title
+
+    def url(self):
+        return str(self.image)[13:]
 
     class Meta:
         verbose_name = 'Photograph'
