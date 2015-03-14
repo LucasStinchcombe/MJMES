@@ -7,12 +7,12 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('about', '0002_aboutus_image'),
+        ('about', '0001_initial'),
     ]
 
     operations = [
         migrations.CreateModel(
-            name='Photo',
+            name='Photograph',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
@@ -31,9 +31,21 @@ class Migration(migrations.Migration):
             name='image',
         ),
         migrations.AddField(
+            model_name='aboutus',
+            name='images',
+            field=models.ManyToManyField(related_name=b'additional image', null=True, to='about.Photograph', blank=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
+            model_name='aboutus',
+            name='photograph',
+            field=models.ForeignKey(related_name=b'main photograph', blank=True, to='about.Photograph', null=True),
+            preserve_default=True,
+        ),
+        migrations.AddField(
             model_name='staff',
-            name='photo',
-            field=models.ForeignKey(blank=True, to='about.Photo', null=True),
+            name='photograph',
+            field=models.ForeignKey(blank=True, to='about.Photograph', null=True),
             preserve_default=True,
         ),
     ]
