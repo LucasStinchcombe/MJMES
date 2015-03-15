@@ -67,10 +67,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.7/howto/static-files/
 
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
-STATIC_ROOT = (os.path.join(BASE_DIR, 'static_root'))
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = 'mjmesbucket'
-STATIC_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+STATIC_URL = 'http://%s.s3-website-us-east-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"),)
 FIXTURE_DIRS = (os.path.join(BASE_DIR, "templates/fixtures"),)
