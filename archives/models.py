@@ -3,12 +3,12 @@ from django.utils.safestring import mark_safe
 
 class Thumbnail(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='static/img/archives')
+    image = models.ImageField(upload_to='archives/static/thumbnail')
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
     def url(self):
-        return self.image.url[7:]
+        return self.image.url[16:]
 
     def __str__(self):
         return self.title

@@ -20,13 +20,13 @@ class Tag(models.Model):
 
 class Image(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='static/img/blogposts')
+    image = models.ImageField(upload_to='blog/static/img')
     caption = models.TextField(null=True, blank=True)
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
     def url(self):
-        return self.image.url[7:]
+        return self.image.url[12:]
 
     def __str__(self):
         return self.title
