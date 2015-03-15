@@ -13,7 +13,5 @@ os.environ['DJANGO_SETTINGS_MODULE'] = 'MJMES.settings'
 sys.path.append(BASE_DIR)
 
 from django.core.wsgi import get_wsgi_application
-from whitenoise.django import DjangoWhiteNoise
 
 application = get_wsgi_application()
-application = DjangoWhiteNoise(application)
