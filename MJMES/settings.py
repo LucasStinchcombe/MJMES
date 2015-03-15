@@ -69,6 +69,8 @@ USE_TZ = True
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = 'mjmesbucket'
+AWS_ACCESS_KEY = os.environ['AWS_ACCESS_KEY']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 STATIC_URL = 'http://%s.s3-website-us-east-1.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"),)
