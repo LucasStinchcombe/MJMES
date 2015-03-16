@@ -3,7 +3,7 @@
 {% load staticfiles %}
 
 {% block photograph %}
-    url('{% static about.photograph.url %}')
+    url('{{ about.photograph.url }}')
 {% endblock %}
 
 {% block heading %}
