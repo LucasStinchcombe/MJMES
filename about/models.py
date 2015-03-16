@@ -12,7 +12,7 @@ def markdown_to_html( markdownText, images ):
 
 class Photograph(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='about/static/img')
+    image = models.ImageField(upload_to='about/photos')
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
@@ -20,7 +20,7 @@ class Photograph(models.Model):
         return self.title
 
     def url(self):
-        return str(self.image)[13:]
+        return self.image.url
 
     class Meta:
         verbose_name = 'Photograph'

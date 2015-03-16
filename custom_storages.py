@@ -4,5 +4,12 @@ from storages.backends.s3boto import S3BotoStorage
 class StaticStorage(S3BotoStorage):
     location = settings.STATICFILES_LOCATION
 
+    def url(self, name):
+        # Fix for django error abusing {% static %}
+        url = super(StaticS3Storage, self).url(name)
+        if name.endswith('/') and not url.endswith('/'):
+            url += '/'
+        return url
+
 class MediaStorage(S3BotoStorage):
     location = settings.MEDIAFILES_LOCATION
