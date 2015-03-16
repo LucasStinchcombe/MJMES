@@ -1,9 +1,7 @@
 from django.conf import settings
 from storages.backends.s3boto import S3BotoStorage
 
-class StaticStorage(S3BotoStorage):
-    location = settings.STATICFILES_LOCATION
-
+class FixedS3BotoStorage(S3BotoStorage):
     def url(self, name):
         # Fix for django error abusing {% static %}
         url = super(StaticS3Storage, self).url(name)
@@ -11,5 +9,5 @@ class StaticStorage(S3BotoStorage):
             url += '/'
         return url
 
-class MediaStorage(S3BotoStorage):
-    location = settings.MEDIAFILES_LOCATION
+StaticStorage = lambda: FixedS3BotoStorage( location=settings.STATICFILES_LOCATION )
+MediaStorage = lambda: S3BotoStorage( location=settings.MEDIAFILES_LOCATION )
