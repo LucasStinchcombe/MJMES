@@ -19,17 +19,17 @@
 {% for object in object_list %}
     <div class="col-md-3">
       <div class="post-preview">
-        <a href="pdf/{{ object.id }}">
-          <img class="img-responsive" src="{{ object.thumbnail.url }}">
-                <h2 class="post-title"> {{ object.title }} </h2>
-            </a>
-            <p class="post-meta">
-                Posted by {{ object.author }} on {{ object.created }} <br>
-            </p>
-        </div>
+          <a href="pdf/{{ object.id }}">
+            <img class="img-responsive" src="{{ object.thumbnail.url }}">
+            <h2 class="post-title"> {{ object.title }} </h2>
+          </a>
+          <p class="post-meta">
+            Published {{ object.created }} <br>
+          </p>
+      </div>
     </div>
 {% endfor %}
-  <div>
+  </div>
 {% endblock %}
 
 
@@ -39,7 +39,7 @@
         {% if page_obj.has_previous %}
         <li class="previous">
             <a href="?page={{ page_obj.previous_page_number }}">&larr; Newer Posts</a>
-            </li>
+        </li>
         {% endif %}
         {% if page_obj.has_next %}
         <li class="next">

@@ -158,11 +158,11 @@ hr.small {
   text-align: center;
   padding: 65px 0 15px 0;
 }
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .intro-header .site-heading,
   .intro-header .post-heading,
   .intro-header .page-heading {
-    padding: 120px 0 100px 0;
+    padding: 105px 0 85px 0;
   }
 }
 .intro-header .site-heading h1,
@@ -179,10 +179,10 @@ hr.small {
   font-weight: 315;
   margin: 10px 0 0;
 }
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .intro-header .site-heading h1,
   .intro-header .page-heading h1 {
-    font-size: 80px;
+    font-size: 75px;
   }
 }
 .intro-header .post-heading h1 {
@@ -208,7 +208,7 @@ hr.small {
 .intro-header .post-heading .meta a {
   color: white;
 }
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .intro-header .post-heading h1 {
     font-size: 55px;
   }
@@ -218,6 +218,7 @@ hr.small {
 }
 .post-preview > a {
   color: #404040;
+  text-align: center;
 }
 .post-preview > a:hover,
 .post-preview > a:focus {
@@ -225,8 +226,9 @@ hr.small {
   color: #0085a1;
 }
 .post-preview > a > .post-title {
-  font-size: 30px;
-  margin-top: 30px;
+  font-size: 25px;
+  text-align: center;
+  margin-top: 15px;
   margin-bottom: 10px;
 }
 .post-preview > a > .post-subtitle {
@@ -236,8 +238,9 @@ hr.small {
   margin-bottom: 10px;
 }
 .post-preview > .post-meta {
+  text-align: center;
   color: #808080;
-  font-size: 18px;
+  font-size: 16px;
   font-style: italic;
   margin-top: 0;
 }
@@ -250,9 +253,9 @@ hr.small {
   color: #0085a1;
   text-decoration: underline;
 }
-@media only screen and (min-width: 768px) {
+@media (min-width: 768px) {
   .post-preview > a > .post-title {
-    font-size: 36px;
+    font-size: 32px;
   }
 }
 .section-heading {
@@ -271,16 +274,22 @@ hr.small {
   border-bottom-left-radius: 5px;
 }
 footer {
-  padding: 50px 0 65px;
+  font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  margin-bottom: 25px;
 }
-footer .list-inline {
-  margin: 0;
-  padding: 0;
+footer small {
+  font-size: 12px;
+  float: left;
+  color: #939393;
 }
-footer .copyright {
-  font-size: 14px;
-  text-align: center;
-  margin-bottom: 0;
+footer small a {
+  color: #545454;
+}
+footer small a:hover {
+  color: #151515;
+}
+footer img {
+  float: right;
 }
 .floating-label-form-group {
   font-size: 14px;
@@ -388,6 +397,9 @@ form .row:first-child .floating-label-form-group {
   color: white;
   text-shadow: none;
   background: #0085a1;
+}
+img {
+  padding: 10px;
 }
 img::selection {
   color: white;

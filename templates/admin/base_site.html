@@ -1,0 +1,28 @@
+{% extends "admin/base.html" %}
+
+{% block title %}
+    MJMES | {{ title }}
+{% endblock %}
+
+{% block extrastyle %}
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+  <style>
+    #header{
+      background-color: #16556f;
+      color: #eaeaea;
+    }
+    #branding h1,
+    #branding h1 a:link,
+    #branding h1 a:visited {
+      color: #eaeaea;
+      font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      letter-spacing: 1px;
+    }
+  </style>
+{% endblock %}
+
+{% block branding %}
+  <h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}

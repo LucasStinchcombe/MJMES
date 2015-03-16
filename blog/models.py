@@ -6,7 +6,7 @@ from django.conf import settings
 def markdown_to_html( markdownText, images ):
     image_ref = ""
     for image in images:
-        image_url = '/' + image.image.url
+        image_url = image.image.url
         image_ref = "%s\n[%s]: %s" % (image_ref, image, image_url)
 
     markdown = "%s\n%s" % (markdownText, image_ref)
@@ -17,16 +17,15 @@ class Tag(models.Model):
     def __str__(self):
         return self.slug
 
-
 class Image(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='blog/static/img')
+    image = models.ImageField(upload_to='blog/img')
     caption = models.TextField(null=True, blank=True)
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
     def url(self):
-        return self.image.url[12:]
+        return self.image.url
 
     def __str__(self):
         return self.title

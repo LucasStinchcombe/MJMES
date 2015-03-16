@@ -16,7 +16,7 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
                 ('title', models.CharField(max_length=200)),
-                ('image', models.ImageField(upload_to=b'static/img/archives')),
+                ('image', models.ImageField(upload_to=b'archives/thumbnails')),
                 ('created', models.DateField(auto_now_add=True)),
                 ('modified', models.DateField(auto_now=True)),
             ],
@@ -33,5 +33,10 @@ class Migration(migrations.Migration):
             name='thumbnail',
             field=models.ForeignKey(blank=True, to='archives.Thumbnail', null=True),
             preserve_default=True,
+        ),
+        migrations.AlterField(
+            model_name='archive',
+            name='pdf',
+            field=models.FileField(upload_to=b'archives/pdf'),
         ),
     ]

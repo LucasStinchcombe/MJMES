@@ -7,13 +7,13 @@ from django.db import models, migrations
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('about', '0003_auto_20150314_2131'),
+        ('archives', '0002_auto_20150316_0523'),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='photograph',
-            name='image',
-            field=models.ImageField(upload_to=b'about/static/img'),
+            model_name='archive',
+            name='created',
+            field=models.DateField(),
         ),
     ]

@@ -4,7 +4,7 @@ from django.contrib.auth import models as auth
 def markdown_to_html( markdownText, images ):
     image_ref = ""
     for image in images:
-        image_url = '/' + image.image.url
+        image_url = image.image.url
         image_ref = "%s\n[%s]: %s" % (image_ref, image, image_url)
 
     markdown = "%s\n%s" % (markdownText, image_ref)
@@ -12,7 +12,7 @@ def markdown_to_html( markdownText, images ):
 
 class Photograph(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='about/photos')
+    image = models.ImageField(upload_to='about/img')
     created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
@@ -50,9 +50,8 @@ class AboutUsQuerySet(models.QuerySet):
 
 class AboutUs(models.Model):
     name = models.CharField(max_length=200, default="test")
-    photograph = models.ForeignKey(Photograph, null=True, blank=True, related_name='main photograph')
     content = models.TextField()
-    images = models.ManyToManyField(Photograph, null=True, blank=True, related_name='additional image')
+    images = models.ManyToManyField(Photograph, null=True, blank=True)
     publish = models.BooleanField(default=False)
     created = models.DateField(auto_now_add=True, null=True)
     modified = models.DateField(auto_now=True, null=True)
@@ -60,7 +59,7 @@ class AboutUs(models.Model):
     objects = AboutUsQuerySet.as_manager()
 
     def __str__(self):
-        return self.content
+        return self.name
 
     def markdown(self):
         return markdown_to_html(self.content, self.images.all())

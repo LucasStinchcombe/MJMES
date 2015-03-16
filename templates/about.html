@@ -3,12 +3,12 @@
 {% load staticfiles %}
 
 {% block photograph %}
-    url('{{ about.photograph.url }}')
+    url('{% static 'img/about-bg.jpg' %}')
 {% endblock %}
 
 {% block heading %}
-    <div class="site-heading">
-        <h1>About Us</h1>
+    <div class="page-heading">
+        <h1>About the Journal</h1>
         <hr class="small">
         <span class="subheading">The Official MJMES Blog</span>
     </div>
@@ -16,11 +16,10 @@
 
 {% block content %}
     {{ about.markdown|markdown }}
-    <hr>
 {% endblock %}
 
 {% block scripts %}
     <script>
-      $('img').addClass('img-responsive')
+      $('#content img').addClass('img-responsive pull-right')
     </script>
 {% endblock %}

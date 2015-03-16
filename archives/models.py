@@ -24,7 +24,7 @@ class Archive(models.Model):
     thumbnail = models.ForeignKey(Thumbnail, null=True, blank=True)
     author = models.CharField(max_length=200, default="MJMES")
 
-    created = models.DateField(auto_now_add=True)
+    created = models.DateField()
     modified = models.DateField(auto_now=True)
     publish = models.BooleanField(default=True)
 
