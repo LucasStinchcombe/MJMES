@@ -20,7 +20,7 @@
     <div class="col-md-3">
       <div class="post-preview">
         <a href="pdf/{{ object.id }}">
-          <img class="img-responsive" src="{% static object.thumbnail.url %}">
+          <img class="img-responsive" src="{{ object.thumbnail.url }}">
                 <h2 class="post-title"> {{ object.title }} </h2>
             </a>
             <p class="post-meta">
