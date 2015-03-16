@@ -31,7 +31,7 @@ INSTALLED_APPS = (
     'django_markdown',
     'blog',
     'archives',
-    'pages',
+    'about',
     'storages',
 )
 MIDDLEWARE_CLASSES = (
