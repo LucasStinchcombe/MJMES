@@ -145,7 +145,7 @@ hr.small {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 .intro-header .site-heading,
 .intro-header .post-heading,
@@ -216,9 +216,11 @@ hr.small {
     font-size: 30px;
   }
 }
+.post-preview {
+  padding-top: 10px;
+}
 .post-preview > a {
   color: #404040;
-  text-align: center;
 }
 .post-preview > a:hover,
 .post-preview > a:focus {
@@ -227,7 +229,6 @@ hr.small {
 }
 .post-preview > a > .post-title {
   font-size: 25px;
-  text-align: center;
   margin-top: 15px;
   margin-bottom: 10px;
 }
@@ -238,7 +239,6 @@ hr.small {
   margin-bottom: 10px;
 }
 .post-preview > .post-meta {
-  text-align: center;
   color: #808080;
   font-size: 16px;
   font-style: italic;
@@ -398,8 +398,11 @@ form .row:first-child .floating-label-form-group {
   text-shadow: none;
   background: #0085a1;
 }
-img {
+#content img {
   padding: 10px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 img::selection {
   color: white;

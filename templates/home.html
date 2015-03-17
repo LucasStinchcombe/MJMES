@@ -17,8 +17,8 @@
 {% block content %}
 {% for object in object_list %}
   <div class='row'>
-    <div class = 'hidden-xs col-sm-4'>
-      <img class="img-responsive" src='{% static object.photograph.url %}'>
+    <div class = 'col-sm-4'>
+      <img class="img-responsive" src='{{ object.photograph.url }}'>
     </div>
     <div class='col-sm-8'>
       <div class="post-preview">
