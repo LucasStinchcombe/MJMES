@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% load django_markdown %}
+{% load staticfiles %}
+
+{% block photograph %}
+    url('{% static 'img/contact-bg.jpg' %}')
+{% endblock %}
+
+{% block heading %}
+    <div class="page-heading">
+        <h1>Contact Us</h1>
+        <hr class="small">
+        <span class="subheading">The Official MJMES Blog</span>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {{ about.markdown|markdown }}
+{% endblock %}
+
+{% block scripts %}
+    <script>
+      $('#content img').addClass('img-responsive pull-right')
+    </script>
+{% endblock %}

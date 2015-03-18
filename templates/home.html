@@ -14,7 +14,7 @@
     </div>
 {% endblock %}
 
-{% block content %}
+{% block blog %}
 {% for object in object_list %}
   <div class='row'>
     <div class = 'col-sm-4'>
@@ -38,7 +38,7 @@
 {% endblock %}
 
 
-{% block paginated %}
+{% block blog_paginated %}
 {% if is_paginated %}
     <ul class="pager">
         {% if page_obj.has_previous %}
@@ -53,4 +53,9 @@
         {% endif %}
     </ul>
 {% endif %}
+{% endblock %}
+
+
+{% block region %}
+  <h4>Filter By Region</h4>
 {% endblock %}
