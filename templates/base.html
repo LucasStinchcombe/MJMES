@@ -17,6 +17,7 @@
 <link href='http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
       rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet' type='text/css'>
 <link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
 <link href='{% static 'fonts/bambi.tff' %}' rel='stylesheet' type='text/css'>
 
@@ -58,7 +59,7 @@
     </nav>
 
     <!-- Header -->
-    <header class="intro-header" style="background-image: linear-gradient(rgba(0,0,0,0.15),rgba(0,0,0,0.65)),
+    <header class="intro-header" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.7)),
                                         {% block photograph %} {% endblock %}">
         <div class="container">
             <div class="row">
@@ -83,14 +84,14 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-8 col-md-offset-1">
+            <div class="col-sm-9 col-md-8 col-md-offset-1">
 
                 {% block blog %} {% endblock %}
 
                 {% block blog_paginated %} {% endblock %}
 
             </div>
-            <div class='col-md-3'>
+            <div class='col-sm-3 col-md-3'>
 
                 {% block region %} {% endblock %}
 
