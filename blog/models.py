@@ -40,7 +40,7 @@ class Entry(models.Model):
     subtitle = models.CharField(max_length=200)
     body = models.TextField()
     photograph = models.ForeignKey(Image, unique=True, related_name='main photograph')
-    author = models.ForeignKey(about.Staff)
+    author = models.CharField(max_length=200)
     images = models.ManyToManyField(Image, blank=True, related_name='figures and tables')
     tags = models.ManyToManyField(Tag)
 

@@ -26,22 +26,6 @@ class Photograph(models.Model):
         verbose_name = 'Photograph'
         verbose_name_plural = 'Photographs'
 
-class Staff(models.Model):
-    first = models.CharField(max_length=200)
-    last = models.CharField(max_length=200)
-    photograph = models.ForeignKey(Photograph, null=True, blank=True)
-    bio = models.TextField()
-    start_date = models.DateField()
-    end_date = models.DateField(null=True, blank=True)
-    user = models.ForeignKey(auth.User, unique=True)
-
-    def __str__(self):
-        return " ".join([self.first, self.last])
-
-    class Meta:
-        verbose_name = "Staff Member"
-        verbose_name_plural = "Staff Members"
-
 
 class AboutUsQuerySet(models.QuerySet):
     def published(self):

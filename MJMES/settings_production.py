@@ -7,16 +7,17 @@ https://docs.djangoproject.com/en/1.7/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/1.7/ref/settings/
 """
+import os
+import dj_database_url
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = '4n-3y@4yg(4*rjsh5$&=x&jckgb(1m++j6ro^br*cxture40n6'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 ALLOWED_HOSTS = ['*']
 
 # Application definition
@@ -43,20 +44,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
-
 ROOT_URLCONF = 'MJMES.urls'
 WSGI_APPLICATION = 'MJMES.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.7/ref/settings/#databases
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'mjmes',
-        'USER': 'mjmes',
-        'PASSWORD': 'twojournalsoneyear2',
-    }
-}
+DATABASES = { 'default': dj_database_url.config() }
+# DATABASES['default']['ENGINE'] = 'django_postgrespool'
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.7/topics/i18n/
@@ -66,11 +60,10 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
-
 # Amazon S3 Bucket
 AWS_STORAGE_BUCKET_NAME = 'mjmesbucket'
-AWS_ACCESS_KEY_ID = 'AKIAIMNHPF4RVTAWPXNA'
-AWS_SECRET_ACCESS_KEY = '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'
+AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY']
+AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
 AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 
 # Media Files
@@ -87,6 +80,9 @@ STATIC_URL = "https://%s/%s/" % (AWS_S3_CUSTOM_DOMAIN, STATICFILES_LOCATION)
 STATICFILES_DIRS = (os.path.join(BASE_DIR, "static"),)
 TEMPLATE_DIRS = (os.path.join(BASE_DIR, "templates"),)
 FIXTURE_DIRS = (os.path.join(BASE_DIR, "templates/fixtures"),)
+
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 # MJMES Website Information
 from django.contrib import admin

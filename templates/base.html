@@ -21,6 +21,9 @@
 <link href='http://fonts.googleapis.com/css?family=Lato:400,900' rel='stylesheet' type='text/css'>
 <link href='{% static 'fonts/bambi.tff' %}' rel='stylesheet' type='text/css'>
 
+  {% block extrastyle %}
+  {% endblock %}
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -79,8 +82,6 @@
 
                 {% block content %} {% endblock %}
 
-                {% block content_paginated %} {% endblock %}
-
             </div>
         </div>
         <div class="row">
@@ -88,7 +89,7 @@
 
                 {% block blog %} {% endblock %}
 
-                {% block blog_paginated %} {% endblock %}
+                {% block paginated %} {% endblock %}
 
             </div>
             <div class='col-sm-3 col-md-3'>

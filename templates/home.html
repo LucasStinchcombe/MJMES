@@ -2,6 +2,16 @@
 {% load django_markdown %}
 {% load staticfiles %}
 
+{% block extrastyle %}
+  <style>
+    .center{
+      text-align: center;
+      padding: 60px 0 25px 0;
+      margin: 0 auto;
+    }
+  </style>
+{% endblock %}
+
 {% block photograph %}
   url('{% static 'img/home-bg.jpg' %}')
 {% endblock %}
@@ -15,20 +25,20 @@
 {% endblock %}
 
 {% block blog %}
-{% for object in object_list %}
-  <div class='row'>
+{% for blogpost in blogposts %}
+  <div class='row' id='{{ blogpost.tags.all|join:" " }}'>
     <div class = 'col-sm-4'>
-      <img class="img-responsive" src='{{ object.photograph.url }}'>
+      <img class="img-responsive" src='{{ blogpost.photograph.url }}'>
     </div>
     <div class='col-sm-8'>
       <div class="post-preview">
-          <a href="blogpost/{{ object.id }}">
-              <h2 class="post-title"> {{ object.title }} </h2>
-              <h3 class="post-subtitle"> {{ object.subtitle }} </h3>
+          <a href="blogpost/{{ blogpost.id }}">
+              <h2 class="post-title"> {{ blogpost.title }} </h2>
+              <h3 class="post-subtitle"> {{ blogpost.subtitle }} </h3>
           </a>
           <p class="post-meta">
-              Posted by {{ object.author }} on {{ object.created }} <br>
-              <small>Tagged Under: {{ object.tags.all|join:", " }}</small>
+              Posted by {{ blogpost.author }} on {{ blogpost.created }} <br>
+              <small>Tagged Under: {{ blogpost.tags.all|join:", " }}</small>
           </p>
       </div>
     </div>
@@ -37,8 +47,7 @@
 {% endfor %}
 {% endblock %}
 
-
-{% block blog_paginated %}
+{% block paginated %}
 {% if is_paginated %}
     <ul class="pager">
         {% if page_obj.has_previous %}
@@ -55,7 +64,11 @@
 {% endif %}
 {% endblock %}
 
-
 {% block region %}
   <h4>Filter By Region</h4>
+
+  {% for tag in tags %}
+  <h5>{{ tag.slug }}</h5>
+  {% endfor %}
+
 {% endblock %}
