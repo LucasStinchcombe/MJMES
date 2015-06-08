@@ -26,19 +26,24 @@
 
 {% block blog %}
 {% for blogpost in blogposts %}
-  <div class='row' id='{{ blogpost.tags.all|join:" " }}'>
+  <div class='row'>
     <div class = 'col-sm-4'>
       <img class="img-responsive" src='{{ blogpost.photograph.url }}'>
     </div>
     <div class='col-sm-8'>
       <div class="post-preview">
-          <a href="blogpost/{{ blogpost.id }}">
+          <a href="/blogpost/{{ blogpost.id }}">
               <h2 class="post-title"> {{ blogpost.title }} </h2>
               <h3 class="post-subtitle"> {{ blogpost.subtitle }} </h3>
           </a>
           <p class="post-meta">
               Posted by {{ blogpost.author }} on {{ blogpost.created }} <br>
-              <small>Tagged Under: {{ blogpost.tags.all|join:", " }}</small>
+              <small>
+                Tagged Under:
+                  {% for tag in blogpost.tags.all %}
+                      <a href='/tag/{{ tag.id }}'>{{ tag }}</a>
+                  {% endfor %}
+              </small>
           </p>
       </div>
     </div>
@@ -67,8 +72,10 @@
 {% block region %}
   <h4>Filter By Region</h4>
 
-  {% for tag in tags %}
-  <h5>{{ tag.slug }}</h5>
+  {% for region in regions %}
+    <h5>
+      <a href='/region/{{ region.id }}/'>{{ region }}</a>
+    </h5>
   {% endfor %}
 
 {% endblock %}

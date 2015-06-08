@@ -12,10 +12,22 @@ def markdown_to_html( markdownText, images ):
     markdown = "%s\n%s" % (markdownText, image_ref)
     return markdown
 
+
 class Tag(models.Model):
-    slug = models.SlugField(max_length=200, unique=True)
+    tag = models.CharField(max_length=200)
+    id = models.SlugField(max_length=200, unique=True, primary_key=True)
+
     def __str__(self):
-        return self.slug
+        return self.tag
+
+
+class Region(models.Model):
+    region = models.CharField(max_length=200, unique=True)
+    id = models.SlugField(max_length=200, unique=True, primary_key=True)
+
+    def __str__(self):
+        return self.region
+
 
 class Image(models.Model):
     title = models.CharField(max_length=200)
@@ -30,9 +42,12 @@ class Image(models.Model):
     def __str__(self):
         return self.title
 
+
 class EntryQuerySet(models.QuerySet):
     def published(self):
         return self.filter(publish=True)
+    def hasTag(tag,self):
+        return self.filter(tags=tag)
 
 
 class Entry(models.Model):
@@ -43,6 +58,7 @@ class Entry(models.Model):
     author = models.CharField(max_length=200)
     images = models.ManyToManyField(Image, blank=True, related_name='figures and tables')
     tags = models.ManyToManyField(Tag)
+    region = models.ManyToManyField(Region)
 
     publish = models.BooleanField(default=True)
     created = models.DateField(auto_now_add=True)

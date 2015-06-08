@@ -2,13 +2,11 @@
 from __future__ import unicode_literals
 
 from django.db import models, migrations
-from django.conf import settings
 
 
 class Migration(migrations.Migration):
 
     dependencies = [
-        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
 
     operations = [
@@ -30,21 +28,24 @@ class Migration(migrations.Migration):
             bases=(models.Model,),
         ),
         migrations.CreateModel(
-            name='Staff',
+            name='Photograph',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('first', models.CharField(max_length=200)),
-                ('last', models.CharField(max_length=200)),
-                ('image', models.ImageField(null=True, upload_to=b'static/img/staff', blank=True)),
-                ('bio', models.TextField()),
-                ('start_date', models.DateField()),
-                ('end_date', models.DateField(null=True, blank=True)),
-                ('user', models.ForeignKey(to=settings.AUTH_USER_MODEL, unique=True)),
+                ('title', models.CharField(max_length=200)),
+                ('image', models.ImageField(upload_to=b'about/img')),
+                ('created', models.DateField(auto_now_add=True)),
+                ('modified', models.DateField(auto_now=True)),
             ],
             options={
-                'verbose_name': 'Staff Member',
-                'verbose_name_plural': 'Staff Members',
+                'verbose_name': 'Photograph',
+                'verbose_name_plural': 'Photographs',
             },
             bases=(models.Model,),
+        ),
+        migrations.AddField(
+            model_name='aboutus',
+            name='images',
+            field=models.ManyToManyField(to='about.Photograph', null=True, blank=True),
+            preserve_default=True,
         ),
     ]
