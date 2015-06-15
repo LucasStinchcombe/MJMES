@@ -13,7 +13,11 @@
 {% endblock %}
 
 {% block photograph %}
-  url('{% static 'img/home-bg.jpg' %}')
+    {% if background %}
+      url('{{ background.url }}')
+    {% else %}
+      url('{% static 'img/home-bg.jpg' %}')
+    {% endif %}
 {% endblock %}
 
 {% block heading %}

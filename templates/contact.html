@@ -3,7 +3,11 @@
 {% load staticfiles %}
 
 {% block photograph %}
-    url('{% static 'img/contact-bg.jpg' %}')
+    {% if background %}
+      url('{{ background.url }}')
+    {% else %}
+      url('{% static 'img/contact-bg.jpg' %}')
+    {% endif %}
 {% endblock %}
 
 {% block heading %}

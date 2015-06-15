@@ -10,7 +10,11 @@ class EntryAdmin(MarkdownModelAdmin):
     prepopulated_fields = {'id':('title',)}
     formfield_overrides = {TextField: {'widget': AdminMarkdownWidget}}
 
+class BackgroundAdmin(MarkdownModelAdmin):
+    list_display = ('title', 'app')
+
 admin.site.register(models.Entry, EntryAdmin)
 admin.site.register(models.Image)
 admin.site.register(models.Region)
 admin.site.register(models.Tag)
+admin.site.register(models.Background, BackgroundAdmin)

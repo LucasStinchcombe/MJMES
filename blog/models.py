@@ -2,6 +2,7 @@ import markdown
 from django.db import models
 from about import models as about
 from django.conf import settings
+from django.apps import apps
 
 def markdown_to_html( markdownText, images ):
     image_ref = ""
@@ -77,3 +78,36 @@ class Entry(models.Model):
         verbose_name = "Blog Entry"
         verbose_name_plural = "Blog Entries"
         ordering = ["-created"]
+
+class Background(models.Model):
+    title = models.CharField(max_length=200)
+    background = models.ImageField(upload_to='blog/backgrounds')
+
+    ABOUT = 'AB'
+    ARCHIVES = 'AR'
+    BLOG = 'BL'
+    CONTACT = 'CO'
+    NONE = 'NO'
+
+    APP_CHOICES = (
+        (ABOUT, 'About'),
+        (ARCHIVES, 'Archives'),
+        (BLOG, 'Blog'),
+        (CONTACT, 'Contact'),
+        (NONE, 'None')
+    )
+
+    app = models.CharField(max_length=2, choices=APP_CHOICES, default=NONE)
+
+    created = models.DateField(auto_now_add=True)
+    modified = models.DateField(auto_now=True)
+
+
+    def url(self):
+        return self.background.url
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        ordering = ["app","title"]
