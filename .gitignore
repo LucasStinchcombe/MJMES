@@ -2,5 +2,4 @@ env
 *.DS_Store
 settings_local.*
 settings_production.*
-settings.*
 *.pyc
