@@ -34,7 +34,7 @@ class Image(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='blog/img')
     caption = models.TextField(null=True, blank=True)
-    created = models.DateField()
+    created = models.DateField(auto_now_add=True)
     modified = models.DateField(auto_now=True)
 
     def url(self):
@@ -62,7 +62,7 @@ class Entry(models.Model):
     region = models.ManyToManyField(Region)
 
     publish = models.BooleanField(default=True)
-    created = models.DateField(auto_now_add=True)
+    created = models.DateField()
     modified = models.DateField(auto_now=True)
 
     id = models.SlugField(max_length=200, unique=True, primary_key=True)
