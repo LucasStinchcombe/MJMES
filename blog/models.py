@@ -34,7 +34,7 @@ class Image(models.Model):
     title = models.CharField(max_length=200)
     image = models.ImageField(upload_to='blog/img')
     caption = models.TextField(null=True, blank=True)
-    created = models.DateField(auto_now_add=True)
+    created = models.DateField()
     modified = models.DateField(auto_now=True)
 
     def url(self):
