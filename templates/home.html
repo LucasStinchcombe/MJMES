@@ -9,6 +9,17 @@
       padding: 60px 0 25px 0;
       margin: 0 auto;
     }
+    .thisRegion{
+      color: #0085A1;
+    }
+    a:hover,
+    a:focus {
+      color: #0085a1;
+      text-decoration: none;
+    }
+    p a {
+      text-decoration: underline;
+    }
   </style>
 {% endblock %}
 
@@ -45,7 +56,7 @@
               <small>
                 Tagged Under:
                   {% for tag in blogpost.tags.all %}
-                      <a href='/tag/{{ tag.id }}'>{{ tag }}</a>
+                      <a href='/tag/{{ tag.id }}'> {{ tag }} </a>
                   {% endfor %}
               </small>
           </p>
@@ -77,9 +88,13 @@
   <h4>Filter By Region</h4>
 
   {% for region in regions %}
-    <h5>
-      <a href='/region/{{ region.id }}/'>{{ region }}</a>
-    </h5>
+    {% if region.id == this_region %}
+      <h5 class='thisRegion'> {{ region }} </h5>
+    {% else %}
+      <h5><a href='/region/{{ region.id }}/'> {{ region }} </a></h5>
+      {% endif %}
   {% endfor %}
+
+  <h5><a href='{% url 'index' %}'> All Regions </a></h5>
 
 {% endblock %}

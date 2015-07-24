@@ -26,6 +26,12 @@ class BlogIndex(BaseIndex):
         return models.Entry.objects.published()
 
 class RegionIndex(BaseIndex):
+
+    def get_context_data(self, **kwargs):
+        context = super(RegionIndex, self).get_context_data(**kwargs)
+        context['this_region'] = self.args[0]
+        return context
+
     def get_queryset(self):
         self.region = get_object_or_404(models.Region, id=self.args[0])
         return models.Entry.objects.filter(region=self.region)
